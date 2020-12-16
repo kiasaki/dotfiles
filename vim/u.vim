@@ -18,7 +18,7 @@ hi StatusLine   cterm=NONE         ctermbg=5        ctermfg=0
 hi StatusLineNC cterm=NONE         ctermbg=6        ctermfg=0
 hi VertSplit    cterm=NONE         ctermbg=6        ctermfg=0
 hi Title        cterm=bold                          ctermfg=NONE
-hi Visual       cterm=NONE         ctermbg=0        ctermfg=15
+hi Visual       cterm=NONE         ctermbg=5        ctermfg=15
 hi VisualNOS    cterm=NONE         ctermbg=0        ctermfg=15
 hi WarningMsg   cterm=standout                      ctermfg=NONE
 hi WildMenu     cterm=standout                      ctermfg=NONE
