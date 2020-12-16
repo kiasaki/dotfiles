@@ -21,7 +21,7 @@ _prompt_venv() {
 }
 _prompt_exit() {
   if [ $1 == 0 ]; then
-    echo "\[\e[0;35m\]"
+    echo "\[\e[0;30m\]"
   else
     echo "\[\e[0;31m\]"
   fi
@@ -30,12 +30,12 @@ _prompt() {
   local exit="$?"
   PS1=""
   PS1+="$(_prompt_exit $exit)"
-  PS1+="\A] $(basename "$(pwd)") ["
-  PS1+="\[\e[0;32m\]"
+  PS1+="\A $(basename "$(pwd)") ("
+  PS1+="\[\e[0;36m\]"
   PS1+="$(_prompt_git)"
   PS1+="$(_prompt_venv)"
   PS1+="$(_prompt_exit $exit)"
-  PS1+="] \[\e[0m\]"
+  PS1+=") \[\e[0m\]"
 }
 PROMPT_COMMAND=_prompt
 
