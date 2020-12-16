@@ -32,6 +32,7 @@ call plug#end()
 
 set grepprg=ag\ --nogroup\ --nocolor
 let g:netrw_banner = 0
+let g:netrw_list_hide = netrw_gitignore#Hide().',^\.\.\=/\=$,\.DS_Store,.git\/$'
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fixers = {'javascript': ['prettier'],'javascriptreact': ['prettier'],
