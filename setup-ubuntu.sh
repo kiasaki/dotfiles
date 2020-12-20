@@ -20,10 +20,10 @@ sudo apt-get install -qq -y software-properties-common \
   redis-server \
   python3-pip
 # libfreetype6-dev \
-#  fontconfig \
-#  xclip \
-#  xorg-dev \
-#  feh
+# fontconfig \
+# xclip \
+# xorg-dev \
+# feh
 
 sudo systemctl start redis-server && sudo systemctl enable redis-server || sudo service redis-server start
 sudo systemctl start postgresql && sudo systemctl enable postgresql || sudo service postgresql start
@@ -72,6 +72,10 @@ if [ ! -f $HOME/code/dev/go/bin/go ]; then
   export GOPATH=~/code/go
   $GOROOT/bin/go get github.com/motemen/gore
   $GOROOT/bin/go get golang.org/x/tools/cmd/goimports
+fi
+
+if [ ! -d "$HOME/.rustup" ]; then
+  curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 fi
 
 if [ ! -d "$HOME/n" ]; then
