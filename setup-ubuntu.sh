@@ -18,10 +18,10 @@ sudo apt-get install -qq -y software-properties-common \
   silversearcher-ag \
   postgresql \
   redis-server \
-  python3-pip
+  python3-pip \
+  xclip
 # libfreetype6-dev \
 # fontconfig \
-# xclip \
 # xorg-dev \
 # feh
 
