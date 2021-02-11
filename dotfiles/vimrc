@@ -7,6 +7,8 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 syntax on
 colorscheme u
 let mapleader=" "
+tmap <C-w> <C-\><C-n><C-w>
+tnoremap <Esc> <C-\><C-n>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

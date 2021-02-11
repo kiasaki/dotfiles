@@ -61,6 +61,7 @@ install_dot dotfiles/vim/markdown.vim .config/nvim/syntax/markdown.vim
 [ ! -f ~/.gitconfig ] && cp $HOME/dotfiles/dotfiles/gitconfig ~/.gitconfig
 [ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
 [ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
+[ ! -f ~/.local/share/konsole/u.colorscheme ] && cp ~/dotfiles/support/konsole.colorscheme ~/.local/share/konsole/u.colorscheme
 
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   curl -o go.tar.gz http://storage.googleapis.com/golang/go1.14.4.linux-amd64.tar.gz
@@ -76,4 +77,8 @@ if [ ! -d "$HOME/n" ]; then
   export PATH="$PATH:$HOME/n/bin"
   $HOME/n/bin/npm i -g yarn
   $HOME/n/bin/npm i -g eslint
+fi
+
+if [ ! -d "$HOME/.rustup" ]; then
+  curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 fi
