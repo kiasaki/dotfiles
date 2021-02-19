@@ -15,6 +15,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 inoremap <tab> <C-n>
 nmap - :edit %:h<CR>
+"nmap - :wq<CR>
 nmap <leader><leader> :nohlsearch<CR>
 autocmd VimResized * :wincmd =
 autocmd BufRead,BufNewFile *.tmpl set filetype=html
