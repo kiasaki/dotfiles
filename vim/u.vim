@@ -54,6 +54,7 @@ hi ALEError     cterm=NONE          ctermbg=9       ctermfg=15
 hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
 hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
 hi ColorColumn                      ctermbg=250
+hi Pmenu                            ctermbg=7
 
 " Helper for determining highlight group under cursor when developing theme
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
