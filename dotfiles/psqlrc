@@ -1,0 +1,14 @@
+\set QUIET
+\set ON_ERROR_ROLLBACK interactive
+\set VERBOSITY verbose
+\timing on
+\pset linestyle unicode
+\pset border 1
+\pset null ¤
+\pset format wrapped
+\pset expanded auto
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set PROMPT1 '%[%033[1m%]%M/%/%R%[%033[0m%]%# '
+\set PROMPT2 ''
+\unset QUIET

@@ -1,0 +1,4 @@
+#!/bin/sh
+slstatus &
+test -x ~/.fehbg && ~/.fehbg
+exec /usr/local/bin/dwm

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Android Studio
+Exec="/home/kiasaki/Documents/android-studio/bin/studio.sh" %f
+Icon=/home/kiasaki/Documents/android-studio/bin/studio.png
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-android-studio
+Name[en_US]=android-studio.desktop

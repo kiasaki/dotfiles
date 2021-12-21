@@ -1,0 +1,151 @@
+dpi:
+  x: 96.0
+  y: 96.0
+tabspaces: 4
+draw_bold_text_with_bright_colors: true
+
+font:
+  normal:
+    family: "Go Mono"
+    style: Regular
+  bold:
+    family: "Go Mono"
+    style: Bold
+  italic:
+    family: "Go Mono"
+    style: Italic
+  size: 14.0
+  offset:
+    x: 0
+    y: -2
+
+# Colors (u)
+colors:
+  # Default colors
+  primary:
+    background: '0xFFFFFF'
+    foreground: '0x373B41'
+  # Normal colors
+  normal:
+    black:   '0x1D1F21'
+    red:     '0xCC6666'
+    green:   '0xB5BD68'
+    yellow:  '0xF0C674'
+    blue:    '0x81A2BE'
+    magenta: '0xB294BB'
+    cyan:    '0x8ABEB7'
+    white:   '0xC5C8C6'
+  # Bright colors
+  bright:
+    black:   '0x969896'
+    red:     '0xCC6666'
+    green:   '0xB5BD68'
+    yellow:  '0xF0C674'
+    blue:    '0x81A2BE'
+    magenta: '0xB294BB'
+    cyan:    '0x8ABEB7'
+    white:   '0xFFFFFF'
+
+# Colors (Dracula)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x282A36'
+#     foreground: '0xF8F8F2'
+#   # Normal colors
+#   normal:
+#     black:   '0x000000'
+#     red:     '0xFF5555'
+#     green:   '0x50FA7B'
+#     yellow:  '0xF1FA8C'
+#     blue:    '0xCAA9FA'
+#     magenta: '0xFF79C6'
+#     cyan:    '0x8BE9FD'
+#     white:   '0xBFBFBF'
+#   # Bright colors
+#   bright:
+#     black:   '0x4D4D4D'
+#     red:     '0xFF6E67'
+#     green:   '0x5AF78E'
+#     yellow:  '0xF4F99D'
+#     blue:    '0xCAA9FA'
+#     magenta: '0xFF92D0'
+#     cyan:    '0x9AEDFE'
+#     white:   '0xE6E6E6'
+
+# Colors (Solarized Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x002b36'
+#     foreground: '0x839496'
+#
+#   # Normal colors
+#   normal:
+#     black:   '0x073642'
+#     red:     '0xdc322f'
+#     green:   '0x859900'
+#     yellow:  '0xb58900'
+#     blue:    '0x268bd2'
+#     magenta: '0xd33682'
+#     cyan:    '0x2aa198'
+#     white:   '0xeee8d5'
+#
+#   # Bright colors
+#   bright:
+#     black:   '0x002b36'
+#     red:     '0xcb4b16'
+#     green:   '0x586e75'
+#     yellow:  '0x657b83'
+#     blue:    '0x839496'
+#     magenta: '0x6c71c4'
+#     cyan:    '0x93a1a1'
+#     white:   '0xfdf6e3'
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
+  - { key: Home,                    chars: "\x1b[1~",  mode: AppCursor   }
+  - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: End,                     chars: "\x1b[4~",  mode: AppCursor   }
+  - { key: PageUp,                  chars: "\x1b[5~"                     }
+  - { key: PageDown,                chars: "\x1b[6~"                     }
+  - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
+  - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
+  - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                   }
+  - { key: Left,                    chars: "\x1b[D",   mode: ~AppCursor  }
+  - { key: Left,                    chars: "\x1bOD",   mode: AppCursor   }
+  - { key: Right,    mods: Shift,   chars: "\x1b[1;2C"                   }
+  - { key: Right,    mods: Control, chars: "\x1b[1;5C"                   }
+  - { key: Right,    mods: Alt,     chars: "\x1b[1;3C"                   }
+  - { key: Right,                   chars: "\x1b[C",   mode: ~AppCursor  }
+  - { key: Right,                   chars: "\x1bOC",   mode: AppCursor   }
+  - { key: Up,       mods: Shift,   chars: "\x1b[1;2A"                   }
+  - { key: Up,       mods: Control, chars: "\x1b[1;5A"                   }
+  - { key: Up,       mods: Alt,     chars: "\x1b[1;3A"                   }
+  - { key: Up,                      chars: "\x1b[A",   mode: ~AppCursor  }
+  - { key: Up,                      chars: "\x1bOA",   mode: AppCursor   }
+  - { key: Down,     mods: Shift,   chars: "\x1b[1;2B"                   }
+  - { key: Down,     mods: Control, chars: "\x1b[1;5B"                   }
+  - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                   }
+  - { key: Down,                    chars: "\x1b[B",   mode: ~AppCursor  }
+  - { key: Down,                    chars: "\x1bOB",   mode: AppCursor   }
+  - { key: F1,                      chars: "\x1bOP"                      }
+  - { key: F2,                      chars: "\x1bOQ"                      }
+  - { key: F3,                      chars: "\x1bOR"                      }
+  - { key: F4,                      chars: "\x1bOS"                      }
+  - { key: F5,                      chars: "\x1b[15~"                    }
+  - { key: F6,                      chars: "\x1b[17~"                    }
+  - { key: F7,                      chars: "\x1b[18~"                    }
+  - { key: F8,                      chars: "\x1b[19~"                    }
+  - { key: F9,                      chars: "\x1b[20~"                    }
+  - { key: F10,                     chars: "\x1b[21~"                    }
+  - { key: F11,                     chars: "\x1b[23~"                    }
+  - { key: F12,                     chars: "\x1b[24~"                    }
+  - { key: Back,                    chars: "\x7f"                        }
+  - { key: Delete,                  chars: "\x1b[3~",  mode: AppKeypad   }
+  - { key: Delete,                  chars: "\x1b[P",   mode: ~AppKeypad  }
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }

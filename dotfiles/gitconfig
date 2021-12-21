@@ -1,0 +1,14 @@
+[user]
+  name = Frederic Tulsidin
+  email = frederic@tulsidin.ca
+[mergetool]
+	prompt = false
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[push]
+	default = simple
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
