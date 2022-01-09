@@ -31,7 +31,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 Create an ssh key, copy it, open safari and add it to Github & Heroku.
 
 ```
-ssh-keygen
+ssh-keygen -t rsa -b 4096
 cat ~/.ssh/id_rsa.pub | pbcopy
 ```
 
@@ -40,8 +40,9 @@ cat ~/.ssh/id_rsa.pub | pbcopy
 Clone `dotfiles` using git.
 
 ```
-git clone git@github.com:kiasaki/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+mkdir ~/repos
+git clone git@github.com:kiasaki/dotfiles.git ~/repos/dotfiles
+cd ~/repos/dotfiles
 ```
 
 ### 4. Run setup
@@ -53,17 +54,9 @@ Run `setup.sh` and `setup-osx.sh` and enter password/say yes a few times
 ./setup.sh
 ```
 
-### 5. Change default shell
-
-Change default shell:
-
-```
-chsh -s /bin/zsh kiasaki
-```
-
 ### 5. Conclusion: Other app and mouse driven config
 
-Get Pages, Moom, BreakTime, F.lux and Hues from the Mac App Store.
+Get Pages, Moom and Hues from the Mac App Store.
 
 In System Setting, set keyboard modifier key for Caps Lock to Control.
 

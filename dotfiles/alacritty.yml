@@ -23,8 +23,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0xFFFFFF'
-    foreground: '0x373B41'
+    background: '0x373B41'
+    foreground: '0xFFFFFF'
   # Normal colors
   normal:
     black:   '0x1D1F21'
