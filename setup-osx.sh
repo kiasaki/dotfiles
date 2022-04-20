@@ -3,9 +3,6 @@ set -xe
 sudo pmset -a sms 0 # no motion sensor
 sudo pmset -a hibernatemode 0 # no hibernate
 sudo systemsetup -setcomputersleep Off >/dev/null # no sleep
-sudo rm /private/var/vm/sleepimage # remove sleep image
-sudo touch /private/var/vm/sleepimage
-sudo chflags uchg /private/var/vm/sleepimage
 sudo scutil --set ComputerName "kiasaki-mbp" # set hostname
 sudo scutil --set HostName "kiasaki-mbp"
 sudo scutil --set LocalHostName "kiasaki-mbp"
@@ -19,17 +16,18 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false # no na
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # allow tab in popups
 defaults write -g KeyRepeat -int 2 # repeat keys fast
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false # no press&hold -> repeat
-defaults write com.apple.universalaccess reduceTransparency -bool true # no transparency
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false # no "smart" sub.
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false # no "smart" sub.
+defaults write com.apple.dock persistent-apps -array # wipe all icons
 defaults write com.apple.dock wvous-tl-corner -int 10 # sleep
 defaults write com.apple.dock wvous-tr-corner -int 2  # mission control
 defaults write com.apple.dock wvous-br-corner -int 11 # launchpad
 defaults write com.apple.dock autohide-time-modifier -float 0 # no dock anim.
 defaults write com.apple.dock autohide-delay -float 0 # no dock delay
-defaults write com.apple.dock tilesize -int 32 # dock icon size
+defaults write com.apple.dock tilesize -int 48 # dock icon size
 defaults write com.apple.dock expose-animation-duration -float 0.1 # faster dock anim.
 defaults write com.apple.dock mru-spaces -bool false # don't rearrance spaces
+killall Dock
 
 if ! [ -x "$(command -v brew)" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -61,7 +59,7 @@ fi
 
 brew services start postgresql
 
-mkdir -p ~/bin ~/code/{dev,repos,go}
+mkdir -p ~/bin ~/gopath
 mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
 function install_dot() {
   local source="$1"
@@ -69,31 +67,33 @@ function install_dot() {
   rm -rf "$HOME/$target"
   ln -s "$HOME/$source" "$HOME/$target"
 }
-install_dot dotfiles/dotfiles/vimrc .vimrc
-install_dot dotfiles/dotfiles/bashrc .bashrc
-install_dot dotfiles/dotfiles/bashrc .zshrc
-install_dot dotfiles/dotfiles/psqlrc .psqlrc
-install_dot dotfiles/dotfiles/tmux.conf .tmux.conf
-install_dot dotfiles/vim/u.vim .vim/colors/u.vim
-install_dot dotfiles/dotfiles/vimrc .config/nvim/init.vim
-install_dot dotfiles/vim/u.vim .config/nvim/colors/u.vim
-install_dot dotfiles/vim/go.vim .config/nvim/syntax/go.vim
-install_dot dotfiles/vim/markdown.vim .config/nvim/syntax/markdown.vim
+install_dot repos/dotfiles/dotfiles/vimrc .vimrc
+install_dot repos/dotfiles/dotfiles/bashrc .bashrc
+install_dot repos/dotfiles/dotfiles/bashrc .zshrc
+install_dot repos/dotfiles/dotfiles/psqlrc .psqlrc
+install_dot repos/dotfiles/dotfiles/tmux.conf .tmux.conf
+install_dot repos/dotfiles/vim/u.vim .vim/colors/u.vim
+install_dot repos/dotfiles/dotfiles/vimrc .config/nvim/init.vim
+install_dot repos/dotfiles/vim/u.vim .config/nvim/colors/u.vim
+install_dot repos/dotfiles/vim/go.vim .config/nvim/syntax/go.vim
+install_dot repos/dotfiles/vim/markdown.vim .config/nvim/syntax/markdown.vim
+install_dot repos/dotfiles/vim/solidity.vim .config/nvim/syntax/solidity.vim
+install_dot repos/dotfiles/dotfiles/alacritty.yml .alacritty.yml
 
 [ ! -f ~/.env ] && touch ~/.env
-[ ! -f ~/.npmrc ] && cp $HOME/dotfiles/dotfiles/npmrc ~/.npmrc
-[ ! -f ~/.gitconfig ] && cp $HOME/dotfiles/dotfiles/gitconfig ~/.gitconfig
-[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
-[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
+[ ! -f ~/.npmrc ] && cp $HOME/repos/dotfiles/dotfiles/npmrc ~/.npmrc
+[ ! -f ~/.gitconfig ] && cp $HOME/repos/dotfiles/dotfiles/gitconfig ~/.gitconfig
+[ ! -f ~/.vim/autoload/plug.vim ] && cp ~/repos/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
+[ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/repos/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
 if [ ! -f $HOME/code/dev/go/bin/go ]; then
   curl -o go.tar.gz https://storage.googleapis.com/golang/go1.17.2.darwin-amd64.tar.gz
   tar -xzf go.tar.gz
-  mv go ~/code/dev
+  mv go ~/goroot
   rm go.tar.gz
-  export GOROOT=~/code/dev/go
-  export GOPATH=~/code/go
-  $GOROOT/bin/go get github.com/motemen/gore
+  export GOROOT=~/goroot
+  export GOPATH=~/gopath
+  $GOROOT/bin/go get github.com/x-motemen/gore
   $GOROOT/bin/go get golang.org/x/tools/cmd/goimports
 fi
 
@@ -104,11 +104,11 @@ fi
 if [ ! -d "$HOME/n" ]; then
   curl -L http://git.io/n-install | bash -s -- -n -y
   export PATH="$PATH:$HOME/n/bin"
-  $HOME/n/bin/npm i -g eslint
+  $HOME/n/bin/npm i -g eslint prettier
 fi
 
-if [ ! -d "$HOME/.nix-profile" ]; then
-  sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
-  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-  curl https://dapp.tools/install | sh
-fi
+# if [ ! -d "$HOME/.nix-profile" ]; then
+#   sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+#   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+#   curl https://dapp.tools/install | sh
+# fi

@@ -14,7 +14,7 @@ hi Search       cterm=reverse                       ctermfg=NONE
 hi MoreMsg      cterm=bold                          ctermfg=NONE
 hi ModeMsg      cterm=bold                          ctermfg=NONE
 hi LineNr       cterm=NONE                          ctermfg=6
-hi StatusLine   cterm=NONE         ctermbg=6        ctermfg=0
+hi StatusLine   cterm=NONE         ctermbg=0        ctermfg=15
 hi StatusLineNC cterm=NONE         ctermbg=7        ctermfg=0
 hi VertSplit    cterm=NONE         ctermbg=6        ctermfg=0
 hi Title        cterm=bold                          ctermfg=NONE

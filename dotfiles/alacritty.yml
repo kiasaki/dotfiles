@@ -6,25 +6,29 @@ draw_bold_text_with_bright_colors: true
 
 font:
   normal:
-    family: "Go Mono"
+    #family: "Go Mono"
+    #family: "Berkeley Mono Trial"
+    family: "JetBrains Mono"
     style: Regular
   bold:
-    family: "Go Mono"
+    #family: "Go Mono"
+    family: "JetBrains Mono"
     style: Bold
   italic:
-    family: "Go Mono"
+    #family: "Go Mono"
+    family: "JetBrains Mono"
     style: Italic
-  size: 14.0
+  size: 15.0
   offset:
     x: 0
-    y: -2
+    y: 0
 
 # Colors (u)
 colors:
   # Default colors
   primary:
-    background: '0x373B41'
-    foreground: '0xFFFFFF'
+    background: '0xFFFFFF'
+    foreground: '0x373B41'
   # Normal colors
   normal:
     black:   '0x1D1F21'

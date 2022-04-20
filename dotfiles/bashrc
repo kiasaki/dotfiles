@@ -1,6 +1,6 @@
 # Bash specifics
-stty start undef
-stty stop undef
+#stty start undef
+#stty stop undef
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth:erasedups
@@ -87,11 +87,9 @@ alias gfco="git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 
 
 # Go helpers
-export GOPATH=$HOME/code/go
-export GOROOT=$HOME/code/dev/go
+export GOPATH=$HOME/gopath
+export GOROOT=$HOME/goroot
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-export wd=$GOPATH/src/github.com
-export wdk=$GOPATH/src/github.com/kiasaki
 
 
 # Rust helpers
@@ -178,8 +176,9 @@ fi
 
 #setxkbmap -layout us -option ctrl:nocaps
 
-. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+#. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
+alias notes="cd ~/Google\ Drive/My\ Drive/Notes && nvterm"
 
 # Computer specific config & secrets
 source "$HOME/.env"
-if [ -e /Users/kiasaki/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/kiasaki/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

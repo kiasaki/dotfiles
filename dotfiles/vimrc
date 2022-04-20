@@ -1,9 +1,10 @@
 set nobackup noswapfile
-set scrolloff=1 colorcolumn=80,100 list listchars=tab:»\ ,trail:·
+set scrolloff=1 list listchars=tab:»\ ,trail:·
 set splitbelow splitright statusline=\ %f\ %y\ %m\ %r%=(%c,\ %l)\ 
-set number ruler cursorline shortmess=atI foldmethod=marker foldlevelstart=10
+set ruler cursorline shortmess=atI foldmethod=marker foldlevelstart=10
 set autoindent cindent expandtab tabstop=2 shiftwidth=2 wildmode=list:longest
 set timeout timeoutlen=1000 ttimeoutlen=100
+" set colorcolumn=80,100 number
 syntax on
 colorscheme u
 let mapleader=" "
@@ -22,6 +23,7 @@ autocmd CompleteDone * silent! pclose
 autocmd BufRead,BufNewFile *.tmpl set filetype=html
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.sol set filetype=solidity
 autocmd BufWritePost *.dart DartFmt
 let s:uname = system("echo -n \"$(uname)\"")
 if s:uname == "Darwin"
