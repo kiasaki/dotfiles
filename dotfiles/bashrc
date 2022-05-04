@@ -20,7 +20,7 @@ _prompt_venv() {
 }
 _prompt_exit() {
   if [ $1 == 0 ]; then
-    echo "\[\e[0;30m\]"
+    echo "\[\e[0;37m\]"
   else
     echo "\[\e[0;31m\]"
   fi

@@ -29,20 +29,20 @@ hi DiffLine     cterm=NONE                          ctermfg=4
 hi DiffAdded    cterm=NONE                          ctermfg=2
 hi DiffRemoved  cterm=NONE                          ctermfg=1
 hi DiffText     cterm=reverse                       ctermfg=NONE
-hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
+hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=6
 hi Number       cterm=NONE          ctermbg=NONE    ctermfg=3
 hi Char         cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE " 5
 hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
 hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
-hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=8
+hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=6
 hi Func         cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
-hi Type         cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
+hi Type         cterm=NONE          ctermbg=NONE    ctermfg=6
 hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi PreProc      cterm=NONE                          ctermfg=NONE " 2
-hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
-hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=8 " 2
+hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=6
+hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=6
 hi Noise        cterm=NONE          ctermbg=NONE    ctermfg=NONE " 8
 hi Ignore       cterm=bold                          ctermfg=NONE
 hi String       cterm=NONE                          ctermfg=4
