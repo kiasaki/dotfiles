@@ -31,6 +31,7 @@ killall Dock
 
 if ! [ -x "$(command -v brew)" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 brew tap petere/postgresql
@@ -86,15 +87,15 @@ install_dot repos/dotfiles/dotfiles/alacritty.yml .alacritty.yml
 [ ! -f ~/.vim/autoload/plug.vim ] && cp ~/repos/dotfiles/vim/plug.vim ~/.vim/autoload/plug.vim
 [ ! -f ~/.config/nvim/autoload/plug.vim ] && cp ~/repos/dotfiles/vim/plug.vim ~/.config/nvim/autoload/plug.vim
 
-if [ ! -f $HOME/code/dev/go/bin/go ]; then
-  curl -o go.tar.gz https://storage.googleapis.com/golang/go1.17.2.darwin-amd64.tar.gz
+if [ ! -f $HOME/goroot/bin/go ]; then
+  curl -o go.tar.gz https://storage.googleapis.com/golang/go1.18.3.darwin-arm64.tar.gz
   tar -xzf go.tar.gz
   mv go ~/goroot
   rm go.tar.gz
   export GOROOT=~/goroot
   export GOPATH=~/gopath
-  $GOROOT/bin/go get github.com/x-motemen/gore
-  $GOROOT/bin/go get golang.org/x/tools/cmd/goimports
+  #$GOROOT/bin/go install github.com/x-motemen/gore@latest
+  $GOROOT/bin/go install golang.org/x/tools/cmd/goimports@latest
 fi
 
 if [ ! -d "$HOME/.rustup" ]; then

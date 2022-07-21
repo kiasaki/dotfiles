@@ -48,6 +48,7 @@ if [[ $platform == 'Linux' ]]; then
   alias ls='ls --color=auto -p'
 elif [[ $platform == 'Darwin' ]]; then
   alias ls='ls -Gp'
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Common aliases
