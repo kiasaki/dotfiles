@@ -9,8 +9,8 @@ let colors_name = "u"
 
 hi Normal       cterm=NONE         ctermbg=NONE     ctermfg=NONE
 hi SpecialKey   cterm=bold                          ctermfg=NONE
-hi IncSearch    cterm=reverse                       ctermfg=NONE
-hi Search       cterm=reverse                       ctermfg=NONE
+hi IncSearch    cterm=NONE         ctermbg=8        ctermfg=NONE
+hi Search       cterm=NONE         ctermbg=8        ctermfg=NONE
 hi MoreMsg      cterm=bold                          ctermfg=NONE
 hi ModeMsg      cterm=bold                          ctermfg=NONE
 hi LineNr       cterm=NONE                          ctermfg=6
@@ -36,9 +36,9 @@ hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE " 5
 hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
 hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
-hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=6
+hi Comment      cterm=NONE          ctermbg=NONE    ctermfg=8
 hi Func         cterm=NONE          ctermbg=NONE    ctermfg=NONE " 2
-hi Type         cterm=NONE          ctermbg=NONE    ctermfg=6
+hi Type         cterm=NONE          ctermbg=NONE    ctermfg=5
 hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
 hi PreProc      cterm=NONE                          ctermfg=NONE " 2
 hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=6

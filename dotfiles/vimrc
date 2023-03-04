@@ -16,7 +16,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 inoremap <tab> <C-n>
 nmap - :edit %:h<CR>
-"nmap - :wq<CR>
 nmap <leader><leader> :nohlsearch<CR>
 autocmd VimResized * :wincmd =
 autocmd CompleteDone * silent! pclose
@@ -24,31 +23,18 @@ autocmd BufRead,BufNewFile *.tmpl set filetype=html
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.sol set filetype=solidity
-autocmd BufWritePost *.dart DartFmt
-let s:uname = system("echo -n \"$(uname)\"")
-if s:uname == "Darwin"
-  vmap <C-x> :!pbcopy<CR>
-else
-  vmap <C-x> :!xclip -f -sel clip<CR>
-endif
 
 call plug#begin()
 Plug 'w0rp/ale'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc', { 'tag': 'v0.4.0' }
-Plug 'natebosch/vim-lsc-dart'
 call plug#end()
 
 set grepprg=ag\ --nogroup\ --nocolor
-let g:lsc_auto_map = v:true
 let g:netrw_banner = 0
 let g:netrw_browse_split = 0
 let g:netrw_list_hide = '^\.\.\=/\=$,\.DS_Store,.git\/$'
 autocmd FileType netrw set nolist
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_fixers = {'javascript': ['prettier'],'javascriptreact': ['prettier'],
-  \ 'go':['goimports'], 'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt']}
-let g:ale_linters = {'javascript':['eslint'],'javascriptreact':['eslint'],
-  \ 'go':['gofmt','golint','go vet','go build'], 'dart':['language_server'],'cpp':['gcc']}
+let g:ale_fixers = {'javascript':['prettier'],'javascriptreact':['prettier'],'typescript':['prettier'],'go':['goimports'],'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt']}
+let g:ale_linters = {'javascript':['eslint'],'javascriptreact':['eslint'],'go':['gofmt','golint','go vet','go build'],'dart':['language_server'],'cpp':['gcc']}

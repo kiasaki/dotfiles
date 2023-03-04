@@ -1,79 +1,29 @@
-# Bash specifics
-#stty start undef
-#stty stop undef
-export HISTSIZE=5000
-export HISTFILESIZE=10000
-export HISTCONTROL=ignoreboth:erasedups
-if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
-fi
-if [ -n "$ZSH_VERSION" ]; then
-  export PROMPT_SUBST=1
-else
-  shopt -s histappend
-fi
-
-_prompt_venv() {
-  if [ ! -z "$VIRTUAL_ENV" ]; then
-    echo "($(basename $VIRTUAL_ENV))"
-  fi
-}
-_prompt_exit() {
-  if [ $1 == 0 ]; then
-    echo "\[\e[0;37m\]"
-  else
-    echo "\[\e[0;31m\]"
-  fi
-}
-_prompt() {
-  local exit="$?"
-  PS1=""
-  PS1+="$(_prompt_exit $exit)"
-  PS1+="\A $(basename "$(pwd)") ("
-  PS1+="\[\e[0;36m\]"
-  PS1+="$(_prompt_git)"
-  PS1+="$(_prompt_venv)"
-  PS1+="$(_prompt_exit $exit)"
-  PS1+=") \[\e[0m\]"
-}
-PROMPT_COMMAND=_prompt
-
 export PAGER=less
 export EDITOR=nvim
 export CLICOLOR=1
 export PATH=".:$HOME/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
+export GOPATH=$HOME/gopath
+export GOROOT=$HOME/goroot
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+export N_PREFIX=$HOME/n
+export PATH=$N_PREFIX/bin:$PATH
 
-platform=$(uname)
-if [[ $platform == 'Linux' ]]; then
-  alias ls='ls --color=auto -p'
-elif [[ $platform == 'Darwin' ]]; then
-  alias ls='ls -Gp'
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# Common aliases
 alias r='exec $SHELL'
-alias she='$EDITOR ~/.mkshrc'
-alias ll='ls -la'
-alias e='nvim'
 alias vim='nvim'
 alias tmux='tmux -2'
 alias xclip='xclip -selection c'
 alias ag='ag --path-to-ignore=~/.agignore'
-alias p='pygmentize '
-alias uuid='node -e "var UUIDv4 = function b(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,b)};console.log(UUIDv4());"'
+alias k='kubectl'
+alias dockerstopall='docker stop $(docker ps -a -q)'
+alias dockerrmall='docker rm $(docker ps -a -q)'
+alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
 
-# Solus helpers
-if hash setxkbmap 2>/dev/null; then
-  setxkbmap -layout us -option ctrl:nocaps
-fi
-
-# Git helpers
 alias gaa='git add --all'
 alias gc='git commit'
 alias gca='git commit --amend --reuse-message=HEAD'
 alias gcl='git checkout -'
-alias gcm='git checkout master'
+alias gcm='git checkout master || git checkout main'
 alias gcmm='git checkout main'
 alias gco='git checkout'
 alias grm='git rebase master'
@@ -81,64 +31,11 @@ alias grc='git rebase --continue'
 alias gd='git diff --color=always | less -r'
 alias gdh='git diff --color=always HEAD | less -r'
 alias gp='git push origin HEAD'
-alias gphm='git push heroku master'
+alias gphm='sh -c "git push heroku main || git push heroku master"'
 alias gs='git status -sb'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gfco="git branch | sed 's/^[ *]*//' | vis-menu | xargs git checkout"
 
-
-# Go helpers
-export GOPATH=$HOME/gopath
-export GOROOT=$HOME/goroot
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-
-
-# Rust helpers
-export PATH="$HOME/.cargo/bin:$PATH"
-
-
-# Node.js helpers
-export N_PREFIX=$HOME/n
-export PATH=$N_PREFIX/bin:$PATH
-
-
-# Python helpers
-export VENV_PYTHON=$(which python3)
-export VENV_HOME=$HOME/code/venv
-function venvn {
-  (cd $VENV_HOME && virtualenv --python=$VENV_PYTHON $1)
-}
-# Activate specific virtual env
-function venva {
-  . "$HOME/code/venv/$1/bin/activate"
-}
-# Deactivate shortcut
-alias venvd='deactivate'
-
-
-# Ansible helpers
-alias asv='ansible-vault '
-alias asp='ansible-playbook --ask-vault-pass -v '
-
-
-# Solana
-alias solnl='solana config set --url http://127.0.0.1:8899;solana balance'
-alias solnd='solana config set --url https://api.devnet.solana.com;solana balance'
-alias solnm='solana config set --url https://api.mainnet-beta.solana.com;solana balance'
-
-
-# Docker helpers
-alias k='kubectl'
-alias dockerstopall='docker stop $(docker ps -a -q)'
-alias dockerrmall='docker rm $(docker ps -a -q)'
-alias dockercleanuntagged='docker rmi $(docker images | grep "^<none>" | tr -s " " | cut -d " " -f 3)'
-
-
-# Kubernetes helpers
-alias k="kubectl"
-
-
-# Tmux helpers
 function tn {
   if [[ -n "$1" ]]; then
     tmux new -s "$1"
@@ -156,7 +53,6 @@ function ta {
 alias tls='tmux ls'
 
 
-# Prompt
 function _prompt_git {
   local dotgit=.git head
   [[ -d "$dotgit" ]] || dotgit=../.git
@@ -175,11 +71,4 @@ else
   export PS1='$(basename $(pwd)):$(_prompt_git)$ '
 fi
 
-#setxkbmap -layout us -option ctrl:nocaps
-
-#. "$HOME/.nix-profile/etc/profile.d/nix.sh"
-
-alias notes="cd ~/Google\ Drive/My\ Drive/Notes && nvterm"
-
-# Computer specific config & secrets
 source "$HOME/.env"
