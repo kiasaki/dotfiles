@@ -1,7 +1,7 @@
 export PAGER=less
 export EDITOR=nvim
 export CLICOLOR=1
-export PATH=".:$HOME/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
+export PATH="$PATH:.:$HOME/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin"
 export GOPATH=$HOME/gopath
 export GOROOT=$HOME/goroot
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH

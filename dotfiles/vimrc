@@ -36,5 +36,5 @@ let g:netrw_list_hide = '^\.\.\=/\=$,\.DS_Store,.git\/$'
 autocmd FileType netrw set nolist
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_fixers = {'javascript':['prettier'],'javascriptreact':['prettier'],'typescript':['prettier'],'go':['goimports'],'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt']}
+let g:ale_fixers = {'javascript':['prettier'],'javascriptreact':['prettier'],'typescript':['prettier'],'typescriptreact':['prettier'],'go':['goimports'],'dart':['dartfmt'],'cpp':['clang-format'],'rust':['rustfmt']}
 let g:ale_linters = {'javascript':['eslint'],'javascriptreact':['eslint'],'go':['gofmt','golint','go vet','go build'],'dart':['language_server'],'cpp':['gcc']}
