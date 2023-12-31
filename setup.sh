@@ -2,8 +2,8 @@
 set -e
 
 function install_dot() {
-  rm -rf "$HOME/repos/dotfiles/$2"
-  ln -s "$HOME/$1" "$HOME/$2"
+  rm -rf "$HOME/$2"
+  ln -s "$HOME/repos/dotfiles/$1" "$HOME/$2"
 }
 mkdir -p ~/bin ~/repos
 mkdir -p ~/.vim/{autoload,colors,syntax} ~/.config/nvim/{autoload,colors,syntax}
@@ -29,9 +29,9 @@ install_dot vim/solidity.vim .config/nvim/syntax/solidity.vim
 
 if [ ! -f $HOME/goroot/bin/go ]; then
   if [[ "$(uname)" == "Darwin" ]]; then
-    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.20.1.darwin-arm64.tar.gz
+    curl -o go.tar.gz https://storage.googleapis.com/golang/go1.20.4.darwin-arm64.tar.gz
   else
-    curl -o go.tar.gz http://storage.googleapis.com/golang/go1.20.1.linux-amd64.tar.gz
+    curl -o go.tar.gz http://storage.googleapis.com/golang/go1.20.4.linux-amd64.tar.gz
   fi
   tar -xzf go.tar.gz
   mv go ~/goroot
@@ -40,8 +40,8 @@ fi
 export GOROOT=~/goroot
 export GOPATH=~/gopath
 export GOBIN=~/bin
-$GOROOT/bin/go install github.com/motemen/gore
-$GOROOT/bin/go install golang.org/x/tools/cmd/goimports
+$GOROOT/bin/go install github.com/motemen/gore@latest
+$GOROOT/bin/go install golang.org/x/tools/cmd/goimports@latest
 
 if [ ! -d "$HOME/.rustup" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path

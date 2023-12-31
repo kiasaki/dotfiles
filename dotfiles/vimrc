@@ -23,6 +23,9 @@ autocmd BufRead,BufNewFile *.tmpl set filetype=html
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.sol set filetype=solidity
+autocmd FileType text setlocal formatoptions=antw textwidth=80 wrapmargin=0 numberwidth=2 noautoindent nocindent nosmartindent
+
+xnoremap <leader>a c<c-r>=system('cast ta', @")<cr><esc>kJ
 
 call plug#begin()
 Plug 'w0rp/ale'
